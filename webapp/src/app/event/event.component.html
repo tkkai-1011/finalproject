@@ -1,0 +1,15 @@
+<h2 class="h2">My todos</h2>
+<div class="parent">
+  <ol class="movies">
+    <li class="movieListItem"
+        *ngFor="let eachTodo of todos">
+      <button title="delete movie"
+              (click)="delete(eachTodo.id)"> Delete </button>
+      <a routerLink="/detail/{{eachTodo.id}}" >
+        {{eachTodo.title}}  ---  Completion: {{eachTodo.complete}}
+      </a>
+
+    </li>
+  </ol>
+  <!-- <app-movie-detail [movie]="selectedMovie"></app-movie-detail> -->
+</div>
