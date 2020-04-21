@@ -21,3 +21,13 @@ exports.save = (event) => {
     const newEvent = new Event(event);
     return newEvent.save();
 };
+
+/**
+ * Returns the Todo object by id.
+ *
+ * @param TodoId
+ */
+exports.get = (EventId) => {
+    const EventPromise = Event.findById(EventId).exec();
+    return EventPromise;
+};

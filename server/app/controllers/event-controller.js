@@ -42,6 +42,24 @@ exports.save = (request, response) => {
 };
 
 /**
+ * Returns order response.
+ *
+ * @param request
+ * @param response
+ */
+exports.get = (request, response) => {
+    const orderId = request.params.id;
+    const result = (todo) => {
+        response.status(200);
+        response.json(todo);
+    };
+    const promise = orderService.get(orderId);
+    promise
+        .then(result)
+        .catch(renderErrorResponse(response));
+};
+
+/**
  * Throws error if error object is present.
  *
  * @param {Response} response The response object

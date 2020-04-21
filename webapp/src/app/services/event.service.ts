@@ -21,7 +21,7 @@ export class EventService {
    */
   constructor(private http: HttpClient) {
     this.eventResource = 'events';
-    this.eventResourceURL = `http://localhost:3000/${this.eventResource}`;
+    this.eventResourceURL =  `${environment.serverBaseURL}/${this.eventResource}`;
   }
 
   getEvents(): Observable<Event[]> {
@@ -29,11 +29,11 @@ export class EventService {
       tap(receivedEvents => console.log(`received Events = ${JSON.stringify(receivedEvents)}`)));
   }
 
-  // getTodoFromId(id: string): Observable<Todo> {
-  //   const url = `${this.todoResourceURL}/${id}`;
-  //   return this.http.get<Todo>(url).pipe(
-  //     tap(selectedTodo => console.log(`selected Todo = ${JSON.stringify(selectedTodo)}`)));
-  // }
+  getEventFromId(id: string): Observable<Event> {
+    const url = `${this.eventResourceURL}/${id}`;
+    return this.http.get<Event>(url).pipe(
+      tap(selectedEvent => console.log(`selected Event = ${JSON.stringify(selectedEvent)}`)));
+  }
   // updateTodo(todo: Todo): Observable<any> {
   //   return this.http.put(`${this.todoResourceURL}/${todo.id}`, todo, httpOptions).pipe(
   //     tap(updatedTodo => console.log(`updated todo = ${JSON.stringify(updatedTodo)}`)));
